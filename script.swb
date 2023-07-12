@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name="evaluate_network_predictions"
+#SBATCH --output="NetworkPredictions.%j.%N.out"
+#SBATCH --error="NetworkPreditions.%j.%N.err"
+#SBATCH --partition=cpu
+#SBATCH --time=23:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=90
+#SBATCH --sockets-per-node=1
+#SBATCH --cores-per-socket=4
+#SBATCH --threads-per-core=4
+#SBATCH --mem-per-cpu=1200
+#SBATCH --export=ALL
+ 
+module load opence/1.5.1
+
+#python helloWorld.py
+python parallel_runme_evaluate_network_prediction_parameters4.py
+
